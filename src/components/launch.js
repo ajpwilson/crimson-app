@@ -8,14 +8,14 @@ const Launch = ({ launch }) => (
   <Mission>
 
     <FeatureContainer>
-      <Feature src={launch.links.flickr_images[0] ? launch.links.flickr_images[0]
-        : launch.links.mission_patch_small ? launch.links.mission_patch_small : logo}/>
-    </FeatureContainer>
-    <Text>
       <Link to={`/${launch.flight_number}`}>
-        {launch.mission_name}
+        <Feature src={launch.links.flickr_images[0] ? launch.links.flickr_images[0]
+          : launch.links.mission_patch_small ? launch.links.mission_patch_small : logo}/>
+        <Text>
+          {launch.mission_name}
+        </Text>
       </Link>
-    </Text>
+    </FeatureContainer>
   </Mission>
 )
 
@@ -32,27 +32,22 @@ Launch.propTypes = {
 
 const Mission = styled.div`
   background-color: var(--white);
-  border-bottom: 4px solid var(--white);
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.35);
   border-radius: 4px;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
   padding: 5px 10px;
   transition: all 0.4s;
-
-  &:hover {
-    border-bottom: 4px solid var(--blue);
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.45);
-  }
 `
 const FeatureContainer = styled.div`
-  flex: 0 1 120px;
+  flex: 0 1 135px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 50%;
   background-color: var(--black);
   overflow: hidden;
+  position: relative;
 `
 const Feature = styled.img`
   overflow: hidden;
@@ -61,11 +56,26 @@ const Feature = styled.img`
   max-width: 120px;
   margin: 0 auto;
   display: block;
+  transform: scale(2,2);
 `
 const Text = styled.div`
+  color: var(--white);
+  font-size: 1.4rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   flex: inital;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 30px;
+  text-align: center;
+  transition: all 0.4s;
+  opacity: 0;
+
+  &:hover {
+    background-color: rgba(24,28,31,0.8);
+    opacity: 1;
+  }
 `
