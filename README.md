@@ -1,6 +1,3 @@
-https://stackoverflow.com/questions/60247043/typeerror-cannot-read-property-rocket-name-of-undefined-even-though-it-is
-
-
 <<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
