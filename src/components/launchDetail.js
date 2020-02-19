@@ -76,13 +76,13 @@ class LaunchDetail extends Component {
         {launch.links.reddit_campaign
           ? <ExternalLinks>
             <h2>External Links</h2>
-            <a href={launch.links.reddit_campaign}>Reddit Campaign Post</a>
-            <a href={launch.links.reddit_launch}>Reddit Launch Post</a>
-            <a href={launch.links.reddit_recovery}>Reddit Recovery Post</a>
-            <a href={launch.links.reddit_media}>Reddit Media Post</a>
-            <a href={launch.links.presskit}>PressKit</a>
-            <a href={launch.links.article_link}>Article</a>
-            <a href={launch.links.wikipedia}>Wikipedia Link</a>
+            {launch.links.reddit_campaign ? <a href={launch.links.reddit_campaign}>Reddit Campaign Post</a> : null}
+            {launch.links.reddit_launch ? <a href={launch.links.reddit_launch}>Reddit Launch Post</a> : null}
+            {launch.links.reddit_recovery ? <a href={launch.links.reddit_recovery}>Reddit Recovery Post</a> : null}
+            {launch.links.reddit_media ? <a href={launch.links.reddit_media}>Reddit Media Post</a> : null}
+            {launch.links.presskit ? <a href={launch.links.presskit}>PressKit</a> : null}
+            {launch.links.article_link ? <a href={launch.links.article_link}>Article</a> : null}
+            {launch.links.wikipedia ? <a href={launch.links.wikipedia}>Wikipedia Link</a> : null}
           </ExternalLinks>
           : null}
 
