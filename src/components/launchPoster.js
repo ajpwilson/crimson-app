@@ -5,11 +5,11 @@ import feature from './../spacex_feature_image.jpg'
 
 const LaunchPoster = ({ launch }) => {
   if (!launch.links.flickr_images) {
-    return <Loading><p>Starting Launch Countdown... 10 ... 9 ...</p></Loading>
+    return <Loading><p>Loading Countdown Sequence...</p></Loading>
   }
   return (
     <PosterWrapper>
-      <Poster src={launch.links.flickr_images[0] ? launch.links.flickr_images[0] : feature} />
+      <Poster src={launch.links.flickr_images[0] ? launch.links.flickr_images[0] : feature} alt="feature image"/>
     </PosterWrapper>
   )
 }
