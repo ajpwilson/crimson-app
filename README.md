@@ -16,4 +16,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 To see what extra work I will put into the project, please view the issues tab above.
 
 ### Reaching out for Help
-I ran into an issue while working on the project, here is my post on StackOverflow: [https://stackoverflow.com/questions/60247043/typeerror-cannot-read-property-rocket-name-of-undefined-even-though-it-is](Type error undefined issue).
+I ran into an issue while working on the project, here is my post on StackOverflow: [Type error undefined issue](https://stackoverflow.com/questions/60247043/typeerror-cannot-read-property-rocket-name-of-undefined-even-though-it-is).
