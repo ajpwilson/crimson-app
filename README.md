@@ -7,6 +7,10 @@ Personal React Project, originally using the Star Wars api, however being too li
 ### 🛰 Launching the app
 To launch the app in a local environment, clone the repo, navigate to the root and type in the cmd line:
 
+```npm install```
+
+to get the required node_modules, then run:
+
 ```npm start```
 
 This runs the app in development mode.<br />
