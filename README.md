@@ -16,6 +16,21 @@ to get the required node_modules, then run:
 This runs the app in development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+For a snappier experience, you can build the production environment:
+
+```npm run build```
+
+you may need to install serve (follow the instructions in the cmd line):
+
+```npm install -g serve```
+
+then run:
+
+```serve -s build```
+
+This runs the app in production mode.<br />
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+
 ### 👨‍🚀 Future Work
 To see what extra work I will put into the project, please view the issues tab above.
 
