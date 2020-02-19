@@ -34,6 +34,10 @@ const GlobalStyle = createGlobalStyle`
     --vape: #d7d7d7;
     --blue: #005288;
     --grey: #A7A9AC;
+    --green: #3c763d;
+    --leaf: #dff0d8;
+    --red: #a94442;
+    --apple: #f2dede;
     background: var(--white);
     color: var(--black);
     font-weight: 100;

@@ -6,7 +6,6 @@ import logo from './../spacex-logo.svg'
 
 const Launch = ({ launch }) => (
   <Mission>
-
     <FeatureContainer>
       <Link to={`/${launch.flight_number}`}>
         <Feature src={launch.links.flickr_images[0] ? launch.links.flickr_images[0]
