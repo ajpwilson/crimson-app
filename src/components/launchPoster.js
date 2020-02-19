@@ -5,7 +5,7 @@ import feature from './../spacex_feature_image.jpg'
 
 const LaunchPoster = ({ launch }) => {
   if (!launch.links.flickr_images) {
-    return <span>Loading...</span>
+    return <Loading><p>Starting Launch Countdown... 10 ... 9 ...</p></Loading>
   }
   return (
     <PosterWrapper>
@@ -22,6 +22,17 @@ LaunchPoster.propTypes = {
   }).isRequired
 }
 
+const Loading = styled.div`
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  text-align:center;
+
+  p {
+    flex: initial;
+    font-weight: 600;
+  }
+`
 const PosterWrapper = styled.div`
   max-width: 100%;
   width: 100%;
@@ -30,8 +41,7 @@ const PosterWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 10px;
-  margin-bottom: 40px;
+  border-radius: 2px;
 `
 const Poster = styled.img`
   width: 100%;

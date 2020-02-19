@@ -30,7 +30,6 @@ Launch.propTypes = {
 }
 
 const Mission = styled.div`
-  background-color: var(--white);
   border-radius: 4px;
   display: flex;
   flex-direction: column;

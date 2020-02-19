@@ -30,29 +30,36 @@ const GlobalStyle = createGlobalStyle`
   html {
     --black: #181C1F;
     --white: #fffcf9 ;
-    --dirty: #f9fcff;
     --vape: #d7d7d7;
     --blue: #005288;
-    --grey: #A7A9AC;
     --green: #3c763d;
     --leaf: #dff0d8;
     --red: #a94442;
     --apple: #f2dede;
-    background: var(--white);
+    background: var(--vape);
     color: var(--black);
     font-weight: 100;
     font-size: 10px;
   }
 
   body {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
   }
 
   a {
       color: var(--blue);
       text-decoration: none;
       font-weight: 600;
+    }
+
+    h2 {
+      margin: 0 0 5px;
+    }
+
+    p {
+      margin: 0 0 10px;
     }
 `
 
