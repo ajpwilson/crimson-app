@@ -12,11 +12,11 @@ To launch the app in a local environment, clone the repo, navigate to the root a
 This runs the app in development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Future Work
+### 👨‍🚀 Future Work
 To see what extra work I will put into the project, please view the issues tab above.
 
-### Reaching out for Help
+### 🔭 Reaching out for Help
 I ran into an issue while working on the project, here is my post on StackOverflow: [Type error undefined issue](https://stackoverflow.com/questions/60247043/typeerror-cannot-read-property-rocket-name-of-undefined-even-though-it-is).
 
-### Final thoughts
-For anyone reviewing this project, please note that some launches have more detail than others, so please make sure you select a few random ones (this will make more sense when looking at the app).
+### 🌖 Final thoughts
+For anyone reviewing this project, please note that some launches have more details than others, so please make sure you select a few random ones (this will make more sense when looking at the app).
