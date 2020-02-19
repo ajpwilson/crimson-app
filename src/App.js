@@ -49,23 +49,23 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 600;
-    }
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+  }
 
-    h2 {
-      margin: 0 0 5px;
-    }
+  h2 {
+    margin: 0 0 5px;
+  }
 
-    p {
-      margin: 0 0 10px;
-    }
+  p {
+    margin: 0 0 10px;
+  }
 `
 
 // Component Styles
 const Main = styled.div`
-    padding: 1rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  `
+  padding: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+`

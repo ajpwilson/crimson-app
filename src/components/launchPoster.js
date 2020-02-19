@@ -36,7 +36,7 @@ const Loading = styled.div`
 const PosterWrapper = styled.div`
   max-width: 100%;
   width: 100%;
-  height: 460px;
+  max-height: 460px;
   overflow: hidden;
   display: flex;
   flex-direction: column;

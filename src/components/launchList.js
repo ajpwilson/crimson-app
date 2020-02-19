@@ -28,7 +28,7 @@ class LaunchList extends Component {
       return (
         <LoadText>
           <p>Accessing mission dossier, stand by...</p>
-          <p>🚀</p>
+          <span role="img" aria-label="Rocket Emoji">🚀</span>
         </LoadText>
       )
     } else {

@@ -90,7 +90,7 @@ class LaunchDetail extends Component {
           ? <VideoContainer>
             <h2>Mission Footage</h2>
             <div>
-              <iframe src={'https://www.youtube.com/embed/' + launch.links.youtube_id} frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              <Iframe src={'https://www.youtube.com/embed/' + launch.links.youtube_id} frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></Iframe>
             </div>
           </VideoContainer>
           : null}
@@ -207,15 +207,14 @@ const VideoContainer = styled.div`
     overflow: hidden;
     padding-top: 56.25%;
   }
-
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
+`
+const Iframe = styled.iframe`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 `
 const GalleryContainer = styled.div`
   padding: 20px;
