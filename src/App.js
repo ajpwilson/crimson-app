@@ -29,7 +29,7 @@ export default App
 const GlobalStyle = createGlobalStyle`
   html {
     --black: #181C1F;
-    --white: #fffcf9 ;
+    --white: #fffcf9;
     --vape: #d7d7d7;
     --blue: #005288;
     --green: #3c763d;
