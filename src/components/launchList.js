@@ -1,49 +1,29 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Launch from './launch'
+import { LaunchContext } from '../context/index'
 
-class LaunchList extends Component {
-  state = {
-    launches: [],
-    isLoaded: false
-  }
+export default function LaunchList () {
+  const appContext = useContext(LaunchContext)
+  const { launches, loading } = appContext
 
-  async componentDidMount () {
-    try {
-      const res = await fetch('https://api.spacexdata.com/v3/launches/')
-      const data = await res.json()
-      this.setState({
-        launches: data,
-        isLoaded: true
-      })
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-  render () {
-    const { launches, isLoaded } = this.state
-
-    if (!isLoaded) {
-      return (
-        <LoadText>
-          <p>Accessing mission dossier, stand by...</p>
-          <span role="img" aria-label="Rocket Emoji">🚀</span>
-        </LoadText>
-      )
-    } else {
-      return (
-        <LaunchGrid>
-          {launches.map((launch) =>
-            <Launch key={launch.flight_number}
-              launch={launch} />)}
-        </LaunchGrid>
-      )
-    }
+  if (loading) {
+    return (
+      <LoadText>
+        <p>Accessing mission dossier, stand by...</p>
+        <span role="img" aria-label="Rocket Emoji">🚀</span>
+      </LoadText>
+    )
+  } else {
+    return (
+      <LaunchGrid>
+        {launches.map((launch, i) =>
+          <Launch key={i}
+            launch={launch} />)}
+      </LaunchGrid>
+    )
   }
 }
-
-export default LaunchList
 
 const LoadText = styled.div`
   text-align: center;

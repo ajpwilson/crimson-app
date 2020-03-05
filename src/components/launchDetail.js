@@ -1,114 +1,118 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import logo from './../spacex-logo.svg'
+import { LaunchContext } from '../context/index'
 
 import LaunchPoster from './launchPoster'
 
-class LaunchDetail extends Component {
-  state = {
-    launch: {
-      rocket: [],
-      launch_site: [],
-      links: {
-        flickr_images: []
-      }
-    }
-  }
+export default function LaunchDetail ({ launch }) {
+  const appContext = useContext(LaunchContext)
+  const { launches } = appContext
+  // class LaunchDetail extends Component {
+  // state = {
+  //   launch: {
+  //     rocket: [],
+  //     launch_site: [],
+  //     links: {
+  //       flickr_images: []
+  //     }
+  //   }
+  // }
 
-  async componentDidMount () {
-    try {
-      const res = await fetch(`https://api.spacexdata.com/v3/launches/${this.props.match.params.flight_number}`)
-      const data = await res.json()
-      this.setState({
-        launch: data
-      })
-    } catch (e) {
-      console.log(e)
-    }
-  }
+  // async componentDidMount () {
+  //   try {
+  //     const res = await fetch(`https://api.spacexdata.com/v3/launches/${this.props.match.params.flight_number}`)
+  //     const data = await res.json()
+  //     this.setState({
+  //       launch: data
+  //     })
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
 
-  render () {
-    const { launch } = this.state
+  // render () {
+  //   const { launch } = this.state
 
-    return (
-      <DetailsWrapper>
-        <LaunchPoster launch={launch} />
-        <Heading>
-          <Title>
-            <Badge>
-              <img src={launch.links.mission_patch_small ? launch.links.mission_patch_small : logo} alt={launch.mission_name}/>
-            </Badge>
-            <Text>
-              <h1>{launch.mission_name}</h1>
-              <p>{launch.launch_year}</p>
-            </Text>
-            <Status>
-              {(launch.launch_success === true) ? <Success>Mission Success</Success> : <Failure> Mission Failed</Failure>}
-            </Status>
-          </Title>
-        </Heading>
+  return (
+    <DetailsWrapper>
+      <LaunchPoster launch={launch} />
+      <Heading>
+        <Title>
+          <Badge>
+            <img src={launch.links.mission_patch_small ? launch.links.mission_patch_small : logo} alt={launch.mission_name}/>
+          </Badge>
+          <Text>
+            <h1>{launch.mission_name}</h1>
+            <p>{launch.launch_year}</p>
+          </Text>
+          <Status>
+            {(launch.launch_success === true) ? <Success>Mission Success</Success> : <Failure> Mission Failed</Failure>}
+          </Status>
+        </Title>
+      </Heading>
 
-        <Stats>
-          <Stat>
-            <h2>{launch.flight_number}</h2>
-            <p>SpaceX Flight Number</p>
-          </Stat>
-          <Stat>
-            <h2>{launch.rocket.rocket_name}</h2>
-            <p>Rocket</p>
-          </Stat>
-          <Stat>
-            <h2>{launch.rocket.rocket_type}</h2>
-            <p>Rocket Type</p>
-          </Stat>
-          <Stat><h2>{launch.launch_site.site_name}</h2>
-            <p>Launch Location</p>
-          </Stat>
-        </Stats>
+      <Stats>
+        <Stat>
+          <h2>{launch.flight_number}</h2>
+          <p>SpaceX Flight Number</p>
+        </Stat>
+        <Stat>
+          <h2>{launch.rocket.rocket_name}</h2>
+          <p>Rocket</p>
+        </Stat>
+        <Stat>
+          <h2>{launch.rocket.rocket_type}</h2>
+          <p>Rocket Type</p>
+        </Stat>
+        <Stat><h2>{launch.launch_site.site_name}</h2>
+          <p>Launch Location</p>
+        </Stat>
+      </Stats>
 
-        {launch.details
-          ? <Details>
-            <h2>Mission Brief</h2>
-            <p>{launch.details}</p>
-          </Details>
-          : null}
+      {launch.details
+        ? <Details>
+          <h2>Mission Brief</h2>
+          <p>{launch.details}</p>
+        </Details>
+        : null}
 
-        {launch.links.reddit_campaign
-          ? <ExternalLinks>
-            <h2>External Links</h2>
-            {launch.links.reddit_campaign ? <a href={launch.links.reddit_campaign}>Reddit Campaign Post</a> : null}
-            {launch.links.reddit_launch ? <a href={launch.links.reddit_launch}>Reddit Launch Post</a> : null}
-            {launch.links.reddit_recovery ? <a href={launch.links.reddit_recovery}>Reddit Recovery Post</a> : null}
-            {launch.links.reddit_media ? <a href={launch.links.reddit_media}>Reddit Media Post</a> : null}
-            {launch.links.presskit ? <a href={launch.links.presskit}>PressKit</a> : null}
-            {launch.links.article_link ? <a href={launch.links.article_link}>Article</a> : null}
-            {launch.links.wikipedia ? <a href={launch.links.wikipedia}>Wikipedia Link</a> : null}
-          </ExternalLinks>
-          : null}
+      {launch.links.reddit_campaign
+        ? <ExternalLinks>
+          <h2>External Links</h2>
+          {launch.links.reddit_campaign ? <a href={launch.links.reddit_campaign}>Reddit Campaign Post</a> : null}
+          {launch.links.reddit_launch ? <a href={launch.links.reddit_launch}>Reddit Launch Post</a> : null}
+          {launch.links.reddit_recovery ? <a href={launch.links.reddit_recovery}>Reddit Recovery Post</a> : null}
+          {launch.links.reddit_media ? <a href={launch.links.reddit_media}>Reddit Media Post</a> : null}
+          {launch.links.presskit ? <a href={launch.links.presskit}>PressKit</a> : null}
+          {launch.links.article_link ? <a href={launch.links.article_link}>Article</a> : null}
+          {launch.links.wikipedia ? <a href={launch.links.wikipedia}>Wikipedia Link</a> : null}
+        </ExternalLinks>
+        : null}
 
-        {launch.links.youtube_id
-          ? <VideoContainer>
-            <h2>Mission Footage</h2>
-            <div>
-              <Iframe src={'https://www.youtube.com/embed/' + launch.links.youtube_id} frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></Iframe>
-            </div>
-          </VideoContainer>
-          : null}
+      {launch.links.youtube_id
+        ? <VideoContainer>
+          <h2>Mission Footage</h2>
+          <div>
+            <Iframe src={'https://www.youtube.com/embed/' + launch.links.youtube_id} frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></Iframe>
+          </div>
+        </VideoContainer>
+        : null}
 
-        {launch.links.flickr_images[0]
-          ? <GalleryContainer>
-            <h2>Mission Optics</h2><p>load times slow, large images.</p>
-            {launch.links.flickr_images.map((image, index) =>
-              <Image key={index} src={image} loading="lazy" alt={image} />)}
-          </GalleryContainer>
-          : null}
+      {launch.links.flickr_images[0]
+        ? <GalleryContainer>
+          <h2>Mission Optics</h2><p>load times slow, large images.</p>
+          {launch.links.flickr_images.map((image, index) =>
+            <Image key={index} src={image} loading="lazy" alt={image} />)}
+        </GalleryContainer>
+        : null}
 
-      </DetailsWrapper>
-    )
-  }
+    </DetailsWrapper>
+  )
 }
+// }
 
-export default LaunchDetail
+// export default LaunchDetail
 
 const DetailsWrapper = styled.div`
   background-color: var(--white);
@@ -221,6 +225,7 @@ const GalleryContainer = styled.div`
 `
 const Image = styled.img`
   width: 100%;
+  /* min-height: 200px; */
   margin: 10px 0;
 `
 const ExternalLinks = styled.div`
