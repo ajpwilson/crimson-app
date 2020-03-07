@@ -17,7 +17,8 @@ const App = () => (
       <Main>
         <Switch>
           <Route exact path="/" component={LaunchList} />
-          <Route path="/:flight_number" component={LaunchDetail} />
+          {/* <Route path="/:flight_number" component={LaunchDetail} /> */}
+          <Route path="/:flight_number" render={(props) => <LaunchDetail id={props.match.params.id} {...this.props} {...props} />} />
         </Switch>
       </Main>
     </div>
