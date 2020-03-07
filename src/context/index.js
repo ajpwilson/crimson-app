@@ -6,13 +6,12 @@ const LaunchContext = React.createContext()
 const LaunchProvider = (props) => {
   const url = 'https://api.spacexdata.com/v3/launches/'
   const [launches, setLaunches] = useState([])
-  const [launch, setLaunch] = useState({})
   const [loading, setLoading] = useState(true)
 
   const fetchLaunches = async () => {
     try {
-      const launchesData = await fetch(url)
-      const launches = await launchesData.json()
+      const launchData = await fetch(url)
+      const launches = await launchData.json()
       setLaunches(launches)
       setLoading(false)
       console.log(launches)
@@ -23,30 +22,14 @@ const LaunchProvider = (props) => {
     }
   }
 
-  const fetchLaunch = async (flight_number) => {
-    try {
-      const launchData = await fetch(url`${flight_number}`)
-      const launch = await launchData.json()
-      setLaunch(launch)
-      setLoading(false)
-      console.log(launch)
-    } catch (e) {
-      if (e) {
-        console.log(e.message, 'Houston we have a problem! Try reloading the browser!')
-      }
-    }
-  }
-
   useEffect(() => {
     fetchLaunches()
-    fetchLaunch()
   }, [])
 
   return (
     <LaunchContext.Provider value={{
       loading,
-      launches,
-      launch
+      launches
     }}>
       {props.children}
     </LaunchContext.Provider>
