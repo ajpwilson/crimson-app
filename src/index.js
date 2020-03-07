@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker'
 import { LaunchProvider } from './context/index'
 
 ReactDOM.render(
-  <LaunchProvider>x
+  <LaunchProvider>
     <App />
   </LaunchProvider>
   , document.getElementById('root'))

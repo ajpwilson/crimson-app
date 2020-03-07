@@ -1,35 +1,29 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from './../spacex-logo.svg'
 
-import LaunchPoster from './launchPoster'
+import LaunchPoster from './LaunchPoster'
 
-class LaunchDetail extends Component {
-  state = {
-    launch: {
-      rocket: [],
-      launch_site: [],
-      links: {
-        flickr_images: []
+const LaunchDetail = () => {
+  const [launch, setLaunch] = useState()
+  const { flight_number } = useParams()
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await (await fetch(`https://api.spacexdata.com/v3/launches/${flight_number}`)).json()
+        setLaunch(data)
+      } catch (e) {
+        console.log(e)
       }
-    }
-  }
+    })()
+  }, [flight_number])
 
-  async componentDidMount () {
-    try {
-      const res = await fetch(`https://api.spacexdata.com/v3/launches/${this.props.match.params.flight_number}`)
-      const data = await res.json()
-      this.setState({
-        launch: data
-      })
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-  render () {
-    const { launch } = this.state
-
+  if (!launch) {
+    // I normally return null or a loading component
+    return null
+  } else {
+  // Add in loading functionality
     return (
       <DetailsWrapper>
         <LaunchPoster launch={launch} />

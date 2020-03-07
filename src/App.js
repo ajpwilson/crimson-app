@@ -3,22 +3,20 @@ import {
   BrowserRouter as Router, Route, Switch
 } from 'react-router-dom'
 import styled, { createGlobalStyle } from 'styled-components'
-import './App.css'
 
-import Header from './components/header'
-import LaunchList from './components/launchList'
-import LaunchDetail from './components/launchDetail'
+import Header from './components/Header'
+import LaunchList from './components/LaunchList'
+import LaunchDetail from './components/LaunchDetail'
 
 const App = () => (
   <Router>
-    <div className="App">
+    <div>
       <GlobalStyle/>
       <Header />
       <Main>
         <Switch>
           <Route exact path="/" component={LaunchList} />
-          {/* <Route path="/:flight_number" component={LaunchDetail} /> */}
-          <Route path="/:flight_number" render={(props) => <LaunchDetail id={props.match.params.id} {...this.props} {...props} />} />
+          <Route path="/:flight_number" component={LaunchDetail} />
         </Switch>
       </Main>
     </div>

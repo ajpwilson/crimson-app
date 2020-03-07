@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import Launch from './launch'
+import Launch from './Launch'
 import { LaunchContext } from '../context/index'
 
 export default function LaunchList () {
