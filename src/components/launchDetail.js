@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from './../spacex-logo.svg'
 
-import LaunchPoster from './LaunchPoster'
-import ImageGallery from './ImageGallery'
+import LaunchPoster from './launchPoster'
+import ImageGallery from './imageGallery'
 
 const LaunchDetail = () => {
   const [launch, setLaunch] = useState()
@@ -41,7 +41,8 @@ const LaunchDetail = () => {
               <p>{launch.launch_year}</p>
             </Text>
             <Status>
-              {(launch.launch_success === true) ? <Success>Mission Success</Success> : <Failure> Mission Failed</Failure>}
+              {(launch.launch_success === null) ? <Success>Future Mission</Success>
+                : (launch.launch_success === true) ? <Success>Mission Success</Success> : <Failure> Mission Failed</Failure>}
             </Status>
           </Title>
         </Heading>
@@ -220,11 +221,6 @@ const Iframe = styled.iframe`
 `
 const GalleryContainer = styled.div`
   padding: 20px;
-`
-const Image = styled.img`
-  width: 100%;
-  /* min-height: 200px; */
-  margin: 10px 0;
 `
 const ExternalLinks = styled.div`
   padding: 20px;

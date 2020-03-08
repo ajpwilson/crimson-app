@@ -4,9 +4,9 @@ import {
 } from 'react-router-dom'
 import styled, { createGlobalStyle } from 'styled-components'
 
-import Header from './components/Header'
-import LaunchList from './components/LaunchList'
-import LaunchDetail from './components/LaunchDetail'
+import Header from './components/header'
+import LaunchList from './components/launchList'
+import LaunchDetail from './components/launchDetail'
 
 const App = () => (
   <Router>
