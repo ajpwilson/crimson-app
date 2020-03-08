@@ -14,7 +14,6 @@ const LaunchProvider = (props) => {
       const launches = await launchData.json()
       setLaunches(launches)
       setLoading(false)
-      console.log(launches)
     } catch (e) {
       if (e) {
         console.log(e.message, 'Houston we have a problem! Try reloading the browser!')
