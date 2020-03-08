@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import logo from './../spacex-logo.svg'
 
 import LaunchPoster from './LaunchPoster'
+import ImageGallery from './ImageGallery'
 
 const LaunchDetail = () => {
   const [launch, setLaunch] = useState()
@@ -20,10 +21,13 @@ const LaunchDetail = () => {
   }, [flight_number])
 
   if (!launch) {
-    // I normally return null or a loading component
-    return null
+    return (
+      <LoadText>
+        <p>Nothing here... maybe just like before the big bang!</p>
+        <p>Try refreshing the browser if content doesn&apos;t load soon.</p>
+      </LoadText>
+    )
   } else {
-  // Add in loading functionality
     return (
       <DetailsWrapper>
         <LaunchPoster launch={launch} />
@@ -91,9 +95,8 @@ const LaunchDetail = () => {
 
         {launch.links.flickr_images[0]
           ? <GalleryContainer>
-            <h2>Mission Optics</h2><p>load times slow, large images.</p>
-            {launch.links.flickr_images.map((image, index) =>
-              <Image key={index} src={image} loading="lazy" alt={image} />)}
+            <h2>Mission Optics</h2><p>Click an image to see a larger version.</p>
+            <ImageGallery launch={launch}/>
           </GalleryContainer>
           : null}
 
@@ -104,6 +107,11 @@ const LaunchDetail = () => {
 
 export default LaunchDetail
 
+const LoadText = styled.div`
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 600;
+`
 const DetailsWrapper = styled.div`
   background-color: var(--white);
 `

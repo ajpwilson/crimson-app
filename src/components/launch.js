@@ -9,7 +9,7 @@ const Launch = ({ launch }) => (
     <FeatureContainer>
       <Link to={`/${launch.flight_number}`}>
         <Feature src={launch.links.flickr_images[0] ? launch.links.flickr_images[0]
-          : launch.links.mission_patch_small ? launch.links.mission_patch_small : logo} alt="launch logo"/>
+          : launch.links.mission_patch_small ? launch.links.mission_patch_small : logo} loading="lazy" alt="launch logo"/>
         <Text>
           {launch.mission_name}
         </Text>
