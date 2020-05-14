@@ -1,34 +1,20 @@
 module.exports = {
+  parser: '@typescript-eslint/parser',
   env: {
     browser: true,
-    es6: true,
-  },
-  extends: [
-    'plugin:react/recommended',
-    'standard',
-  ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
-  parser:'babel-eslint',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    babelOptions: {
-      configFile: "babel.config.js",
-    },
-    ecmaVersion: 2018,
-    sourceType: 'module',
+    es2020: true
   },
   plugins: [
-    'react',
+    '@typescript-eslint',
+    'react'
+  ],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'standard',
+    'plugin:react/recommended'
   ],
   rules: {
-    "react/jsx-filename-extension": 0,
-    "react/destructuring-assignment": 0,
-    "react/state-in-constructor": 0,
-    "import/extensions": 0
-  },
-};
+    'camelcase': 'off',
+    '@typescript-eslint/camelcase': 'off'
+  }
+}

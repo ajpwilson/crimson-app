@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from './../spacex-logo.svg'
 
-const Header = () => (
+const Header = (): JSX.Element => (
   <div>
     <HeaderInner>
       <Link to="/" title="SpaceX Rocket Launches">

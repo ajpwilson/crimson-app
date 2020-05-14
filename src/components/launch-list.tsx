@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import Launch from './launch'
 import { LaunchContext } from '../context/index'
 
-export default function LaunchList () {
-  const appContext = useContext(LaunchContext)
+export default function LaunchList (): JSX.Element {
+  const appContext = useContext<ContextInterface>(LaunchContext)
+
   const { launches, loading } = appContext
 
   if (loading) {
@@ -17,9 +18,8 @@ export default function LaunchList () {
   } else {
     return (
       <LaunchGrid>
-        {launches.map((launch, i) =>
-          <Launch key={i}
-            launch={launch} />)}
+        {launches.map((item, i) =>
+          <Launch key={i} launch={item} />)}
       </LaunchGrid>
     )
   }
