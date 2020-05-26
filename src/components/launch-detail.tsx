@@ -2,15 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from './../spacex-logo.svg'
+import { LaunchInterface } from './interfaces'
 
-import LaunchPoster from './launchPoster'
-import ImageGallery from './imageGallery'
+import LaunchPoster from './launch-poster'
+import ImageGallery from './image-gallery'
 
-const LaunchDetail = () => {
-  const [launch, setLaunch] = useState()
+const LaunchDetail: React.FC<LaunchInterface> = () => {
+  const [launch, setLaunch] = useState<LaunchInterface>()
   const { flight_number } = useParams()
   useEffect(() => {
-    (async () => {
+    (async (): Promise<void> => {
       try {
         const data = await (await fetch(`https://api.spacexdata.com/v3/launches/${flight_number}`)).json()
         setLaunch(data)

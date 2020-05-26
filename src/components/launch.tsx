@@ -1,10 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import logo from './../spacex-logo.svg'
+import { LaunchInterface } from './interfaces'
 
-const Launch = ({ launch }) => (
+interface LaunchProps {
+  launch: LaunchInterface;
+}
+
+const Launch: React.FC<LaunchProps> = ({ launch }: LaunchProps) => (
   <Mission>
     <FeatureContainer>
       <Link to={`/${launch.flight_number}`}>
@@ -19,15 +23,6 @@ const Launch = ({ launch }) => (
 )
 
 export default Launch
-
-Launch.propTypes = {
-  launch: PropTypes.shape({
-    mission_name: PropTypes.string.isRequired,
-    flight_number: PropTypes.number.isRequired,
-    links: PropTypes.any,
-    flickr_images: PropTypes.string
-  }).isRequired
-}
 
 const Mission = styled.div`
   border-radius: 4px;

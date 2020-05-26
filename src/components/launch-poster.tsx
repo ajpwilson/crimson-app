@@ -1,9 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import feature from './../spacex_feature_image.jpg'
+import { LaunchInterface } from './interfaces'
 
-const LaunchPoster = ({ launch }) => {
+interface LaunchPosterProps {
+  launch: LaunchInterface;
+}
+
+const LaunchPoster: React.FC<LaunchPosterProps> = ({ launch }: LaunchPosterProps) => {
   if (!launch.links.flickr_images) {
     return <Loading><p>Loading Countdown Sequence...</p></Loading>
   }
@@ -15,12 +19,6 @@ const LaunchPoster = ({ launch }) => {
 }
 
 export default LaunchPoster
-
-LaunchPoster.propTypes = {
-  launch: PropTypes.shape({
-    links: PropTypes.any
-  }).isRequired
-}
 
 const Loading = styled.div`
   display: flex;

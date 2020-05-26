@@ -5,10 +5,10 @@ import {
 import styled, { createGlobalStyle } from 'styled-components'
 
 import Header from './components/header'
-import LaunchList from './components/launchList'
-import LaunchDetail from './components/launchDetail'
+import LaunchList from './components/launch-list'
+import LaunchDetail from './components/launch-detail'
 
-const App = () => (
+const App = (): JSX.Element => (
   <Router>
     <div>
       <GlobalStyle/>

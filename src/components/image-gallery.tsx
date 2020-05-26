@@ -1,50 +1,45 @@
 import React, { useState, useCallback } from 'react'
-import PropTypes from 'prop-types'
 import Gallery from 'react-photo-gallery'
 import Carousel, { Modal, ModalGateway } from 'react-images'
+import { LaunchInterface } from './interfaces'
+import { GalleryPhoto, CarouselPhoto } from './types'
+
+interface ImageGalleryProps {
+  launch: LaunchInterface;
+}
 
 // react-photo-gallery package is causing warnings due to not using hooks.
-const ImageGallery = ({ launch }) => {
+const ImageGallery = ({ launch }: ImageGalleryProps): JSX.Element => {
   const [currentImage, setCurrentImage] = useState(0)
   const [viewerIsOpen, setViewerIsOpen] = useState(false)
-  const photos = launch.links.flickr_images.map(src => ({ src, width: 1, height: 1 }))
+  const photosForGallery: GalleryPhoto[] = launch.links.flickr_images.map((src) => ({ src, width: 1, height: 1 }))
+  const viewsForCarousel: CarouselPhoto[] = launch.links.flickr_images.map((source) => ({ source }))
 
-  const openLightbox = useCallback((e, { photo, index }) => {
+  const openLightbox = useCallback(({ index }) => {
     setCurrentImage(index)
     setViewerIsOpen(true)
   }, [])
 
-  const closeLightbox = () => {
+  const closeLightbox = (): void => {
     setCurrentImage(0)
     setViewerIsOpen(false)
   }
 
   return (
     <div>
-      <Gallery photos={photos} onClick={openLightbox} />
+      <Gallery photos={photosForGallery} onClick={openLightbox} />
       <ModalGateway>
-        {viewerIsOpen ? (
+        {viewerIsOpen && (
           <Modal onClose={closeLightbox}>
             <Carousel
               currentIndex={currentImage}
-              views={photos.map(x => ({
-                ...x,
-                srcset: x.srcSet,
-                caption: x.title
-              }))}
+              views={viewsForCarousel}
             />
           </Modal>
-        ) : null }
+        )}
       </ModalGateway>
     </div>
   )
-}
-
-ImageGallery.propTypes = {
-  launch: PropTypes.shape({
-    links: PropTypes.any,
-    flickr_images: PropTypes.string
-  }).isRequired
 }
 
 export default ImageGallery
