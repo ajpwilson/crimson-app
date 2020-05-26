@@ -29,14 +29,14 @@ const ImageGallery = ({ launch }: ImageGalleryProps): JSX.Element => {
     <div>
       <Gallery photos={photosForGallery} onClick={openLightbox} />
       <ModalGateway>
-        {viewerIsOpen ? (
+        {viewerIsOpen && (
           <Modal onClose={closeLightbox}>
             <Carousel
               currentIndex={currentImage}
               views={viewsForCarousel}
             />
           </Modal>
-        ) : null }
+        )}
       </ModalGateway>
     </div>
   )
