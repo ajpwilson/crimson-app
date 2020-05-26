@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import feature from './../spacex_feature_image.jpg'
+import { LaunchInterface } from './interfaces'
 
-interface Props {
+interface LaunchPosterProps {
   launch: LaunchInterface;
 }
 
-const LaunchPoster = ({ launch }: Props): JSX.Element => {
+const LaunchPoster: React.FC<LaunchPosterProps> = ({ launch }: LaunchPosterProps) => {
   if (!launch.links.flickr_images) {
     return <Loading><p>Loading Countdown Sequence...</p></Loading>
   }

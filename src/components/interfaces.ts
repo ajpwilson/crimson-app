@@ -1,11 +1,11 @@
-interface ContextInterface {
-  launches: ILaunch[];
+export interface ContextInterface {
+  launches: LaunchInterface[];
   item?: string;
   loading: boolean;
   i?: number;
 }
 
-interface LaunchInterface {
+export interface LaunchInterface {
   flight_number: number;
   mission_name: string;
   launch_year: string;

@@ -2,12 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from './../spacex-logo.svg'
+import { LaunchInterface } from './interfaces'
 
-interface Props {
+interface LaunchProps {
   launch: LaunchInterface;
 }
 
-const Launch = ({ launch }: Props): JSX.Element => (
+const Launch: React.FC<LaunchProps> = ({ launch }: LaunchProps) => (
   <Mission>
     <FeatureContainer>
       <Link to={`/${launch.flight_number}`}>

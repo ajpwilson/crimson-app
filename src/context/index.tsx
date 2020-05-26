@@ -1,7 +1,8 @@
 import React, { useState, useEffect, Context } from 'react'
+import { ContextInterface } from '../components/interfaces'
 
-interface Props {
-  children: React.ReactNode;
+interface ContextProps {
+  children: JSX.Element;
 }
 
 const LaunchContext: Context<ContextInterface> = React.createContext<ContextInterface>({
@@ -9,7 +10,7 @@ const LaunchContext: Context<ContextInterface> = React.createContext<ContextInte
   loading: false
 })
 
-const LaunchProvider: React.FC<Props> = ({ children }: Props): JSX.Element => {
+const LaunchProvider: React.FC<ContextProps> = ({ children }: ContextProps) => {
   const url = 'https://api.spacexdata.com/v3/launches/'
   const [launches, setLaunches] = useState([])
   const [loading, setLoading] = useState(true)
